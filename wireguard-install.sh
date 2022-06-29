@@ -437,7 +437,6 @@ Before=network.target
 [Service]
 Type=simple
 Restart=on-failure
-RestartSecs=5s
 ExecStart=$iptables_path -t nat -A POSTROUTING -s 10.7.0.0/24 ! -d 10.7.0.0/24 -j SNAT --to $ip
 ExecStart=$iptables_path -I INPUT -p udp --dport $port -j ACCEPT
 ExecStart=$iptables_path -I FORWARD -s 10.7.0.0/24 -j ACCEPT
